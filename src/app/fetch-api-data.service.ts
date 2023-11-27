@@ -8,7 +8,7 @@ const apiUrl = 'https://nostalgic-flix.herokuapp.com/';
 @Injectable({
   providedIn: 'root'
 })
-export class UserRegistrationService {
+export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
@@ -115,7 +115,7 @@ removeMovieFavorites(movieID:string): Observable<any> {
 }
 
 //Api call to update users information
-updateUser(updatedInfo:any): Observable<any> {
+updateUser(): Observable<any> {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
   return this.http.put(apiUrl + `users/${user.Username}`, {
