@@ -1,0 +1,41 @@
+<div class="main-container">
+	<div class="heading-info">
+		<h1>Hello {{user.Username}}</h1>
+		<div class="field-container">
+			<div>
+				<p>Current Username: {{ user.Username }}</p>
+				<p>Current Email: {{ user.Email }}</p>
+			</div>
+		</div>
+		<div>
+			<div>Favorite Movies: {{user.FavoriteMovies}}</div>
+		</div>
+		<mat-card>
+			<mat-card-content>
+				<form class="profile-form">
+					<mat-form-field>
+						<input matInput [(ngModel)]="userData.Username" placeholder="Username" type="text"
+							name="Username" required>
+					</mat-form-field>
+					<mat-form-field>
+						<input matInput [(ngModel)]="userData.Password" type="password" placeholder="Password"
+							name="Password" required>
+					</mat-form-field>
+					<mat-form-field>
+						<input matInput [(ngModel)]="userData.Email" type="email" placeholder="Email" name="Email"
+							required>
+					</mat-form-field>
+					<mat-card-actions>
+						<button mat-raised-button (click)="updateUser()" color="primary">
+							Update Settings
+						</button>
+						<span class="spacer"></span>
+						<button mat-fab (click)="deleteUser()" color="warn">
+							Delete User
+						</button>
+					</mat-card-actions>
+				</form>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>
