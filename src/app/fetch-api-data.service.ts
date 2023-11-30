@@ -96,8 +96,13 @@ getUser(userName:string): Observable<any> {
 addMovieFavorites(movieID:string): Observable<any> {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  user.FavoriteMovies.push(movieID);
+  localStorage.setItem('user', JSON.stringify(user));
+
   return this.http.post(apiUrl + `users/${user.Username}/movies/${movieID}`, {
     headers: new HttpHeaders({
+      'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token,
     })
   }).pipe(catchError(this.handleError));
@@ -107,6 +112,14 @@ addMovieFavorites(movieID:string): Observable<any> {
 removeMovieFavorites(movieID:string): Observable<any> {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  const index = user.FavoriteMovies.indexOf(movieID);
+  if (index >= 0) {
+    user.FavoriteMovies.splice(index, 1);
+  }
+  localStorage.setItem('user', JSON.stringify(user));
+
+
   return this.http.delete(apiUrl + `users/${user.Username}/movies/${movieID}`, {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + token,
@@ -115,10 +128,10 @@ removeMovieFavorites(movieID:string): Observable<any> {
 }
 
 //Api call to update users information
-updateUser(): Observable<any> {
+updateUser(updatedUser: any): Observable<any> {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-  return this.http.put(apiUrl + `users/${user.Username}`, {
+  return this.http.put(apiUrl + `users/${user.Username}`, updatedUser, {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + token,
     })
@@ -135,6 +148,17 @@ deleteUser(): Observable<any> {
     })
   }).pipe(catchError(this.handleError));
 }
+
+isFavoriteMovie(movieId: string): boolean {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  if (user) {
+    return user.FavoriteMovies.includes(movieId);
+  }
+
+  return false;
+}
+
+
 
 
 
