@@ -1,0 +1,33 @@
+.main-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.main-page {
+	align-self: center;
+}
+
+.btn-container {
+	display: flex;
+	justify-content: center;
+}
+
+.main-header {
+	font-size: 50px;
+}
+
+.top-bar {
+	border-top: 4px solid #67B7D1 ;
+	position: relative;
+	right: 50px;
+	padding: 20px;
+}
+
+.bottom-bar {
+	border-bottom: 4px solid #67B7D1 ;
+	position: relative;
+	right: -50px;
+	padding: 20px;
+}
