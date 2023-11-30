@@ -1,0 +1,19 @@
+.main-container {
+	padding: 26px;
+	display: flex;
+	flex-direction: column;
+  }
+
+  .profile-form {
+	mat-form-field {
+	  width: 100%;
+	}
+  }
+
+  .heading-info {
+	align-self: center;
+  }
+
+  .spacer {
+	flex: 1 1 auto;
+  }
