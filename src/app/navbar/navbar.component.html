@@ -1,0 +1,14 @@
+<mat-toolbar class="navbar">
+	<a routerLink="/movies">
+		<h2 class="nav-header">NostalgicFlix</h2>
+	</a>
+	<span class="spacer"></span>
+	<a class="nav-element" routerLink="/profile">
+		<button mat-icon-button aria-label="Profile Settings">
+			<mat-icon class="icon-styles">person</mat-icon>
+		</button>
+	</a>
+	<button mat-icon-button aria-label="Logout" (click)="logoutUser()">
+		<mat-icon class="icon-styles">exit_to_app</mat-icon>
+	</button>
+</mat-toolbar>
