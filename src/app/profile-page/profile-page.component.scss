@@ -17,3 +17,36 @@
   .spacer {
 	flex: 1 1 auto;
   }
+
+  .flex {
+	display: flex;
+  }
+
+  .movie-title {
+	color: black;
+  }
+
+  .movie-container {
+	display: grid;
+	grid-template-columns:  repeat(auto-fit, minmax(280px, 1fr));
+	grid-gap: 30px;
+	padding: 20px;
+}
+
+.title-style {
+	padding: 20px;
+	font-size: 20px;
+}
+
+.movie-items {
+	display: flex;
+	flex-direction: column;
+}
+
+.details-info {
+	padding: 20px;
+}
+
+.more-info {
+	margin: 5px;
+}
