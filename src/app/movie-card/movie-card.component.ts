@@ -33,9 +33,8 @@ if (!user) {
 
 
 getMovies(): void {
-  this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      console.log(this.movies);
+  this.fetchApiData.getAllMovies().subscribe((response: any) => {
+      this.movies = response;
       return this.movies;
     });
   }
