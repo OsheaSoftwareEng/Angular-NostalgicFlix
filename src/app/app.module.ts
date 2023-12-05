@@ -56,7 +56,7 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
     
   ],
   providers: [],
