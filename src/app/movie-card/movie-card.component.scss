@@ -5,14 +5,18 @@
 	padding: 20px;
 }
 
+
 .movie-items {
 	display: flex;
 	flex-direction: column;
+
 }
 
 .title-style {
 	padding: 20px;
-	font-size: 20px;
+	font-size: 22px;
+	font-weight: bold;
+	color: white;
 }
 
 .details-info {
@@ -21,4 +25,16 @@
 
 .more-info {
 	margin: 5px;
+}
+
+.bg-color {
+	background-color: black;
+}
+
+.nonfav-btn {
+	color: white;
+}
+
+.fav-btn {
+	color: red;
 }

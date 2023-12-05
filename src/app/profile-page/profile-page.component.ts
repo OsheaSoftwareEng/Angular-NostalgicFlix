@@ -13,7 +13,7 @@ type User = { _id?: string, Username?: string, Password?: string, Email?: string
   styleUrls: ['./profile-page.component.scss']
 })
 export class ProfilePageComponent implements OnInit {
-
+  userinfo: User = {};
   user: any = {};
 
   FavoriteMovies: any[] = [];
@@ -57,7 +57,7 @@ export class ProfilePageComponent implements OnInit {
     this.fetchApiData.updateUser(this.userData).subscribe((result) => {
       localStorage.setItem('user', JSON.stringify(result))
       this.user = result;
-      this.snackBar.open('user updated!', 'OK', {
+      this.snackBar.open('your settings were updated!', 'OK', {
         duration: 2000
       })
     })

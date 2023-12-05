@@ -79,17 +79,17 @@ getMovies(): void {
     return this.fetchApiData.isFavoriteMovie(id)
   }
 
-  removeFavoriteMovie(id: string): void {
-    this.fetchApiData.removeMovieFavorites(id).subscribe(() => {
-      this.snackBar.open('removed from favorites', 'OK', {
+  addFavoriteMovie(id: string): void {
+    this.fetchApiData.addMovieFavorites(id).subscribe(() => {
+      this.snackBar.open('added to favorites', 'OK', {
         duration: 2000
       })
     });
   }
 
-  addFavoriteMovie(id: string): void {
-    this.fetchApiData.addMovieFavorites(id).subscribe(() => {
-      this.snackBar.open('added to favorites', 'OK', {
+  removeFavoriteMovie(id: string): void {
+    this.fetchApiData.removeMovieFavorites(id).subscribe(() => {
+      this.snackBar.open('removed from favorites', 'OK', {
         duration: 2000
       })
     });

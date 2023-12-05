@@ -49,12 +49,12 @@
 					<button mat-raised-button (click)="openMovieDescription(movie.Description)" color="primary"
 						class="more-info">More
 						Details!</button>
-					<button *ngIf="!isFavorite(movie._id)" mat-icon-button (click)="addFavoriteMovie(movie._id)"
-						mattooltip="Added to favorites">
+					<button class="nonfav-btn" *ngIf="!isFavorite(movie._id)" mat-icon-button
+						(click)="addFavoriteMovie(movie._id)" mattooltip="Added to favorites">
 						<mat-icon>favorite_border</mat-icon>
 					</button>
-					<button *ngIf="isFavorite(movie._id)" mat-icon-button (click)="removeFavoriteMovie(movie._id)"
-						mattooltip="Removed from favorites">
+					<button class="fav-btn" *ngIf="isFavorite(movie._id)" mat-icon-button
+						(click)="removeFavoriteMovie(movie._id)" mattooltip="Removed from favorites">
 						<mat-icon>favorite</mat-icon>
 					</button>
 				</div>

@@ -21,7 +21,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { MoviePreviewComponent } from './movie-preview/movie-preview.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -40,7 +39,6 @@ const appRoutes: Routes = [
     NavbarComponent,
     MovieInfoComponent,
     ProfilePageComponent,
-    MoviePreviewComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
