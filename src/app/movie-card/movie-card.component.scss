@@ -3,15 +3,15 @@
 	grid-template-columns:  repeat(auto-fit, minmax(280px, 1fr));
 	grid-gap: 30px;
 	padding: 20px;
+	
 }
-
 
 .movie-items {
 	display: flex;
 	flex-direction: column;
-
+	align-items: center;
 }
-
+	
 .title-style {
 	padding: 20px;
 	font-size: 22px;
@@ -20,7 +20,8 @@
 }
 
 .details-info {
-	padding: 20px;
+	display: flex;
+	padding: 30px;
 }
 
 .more-info {
@@ -34,8 +35,10 @@
 
 .nonfav-btn {
 	color: white;
+	transform: scale(2);
 }
 
 .fav-btn {
 	color: red;
+	transform: scale(2);
 }
