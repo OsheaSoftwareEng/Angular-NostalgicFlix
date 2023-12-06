@@ -1,4 +1,4 @@
-import { catchError,map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -94,13 +94,12 @@ getUser(userName:string): Observable<any> {
 
 //Api call to add movies to favorites
 addMovieFavorites(movieID:string): Observable<any> {
-  const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-
+  const token = localStorage.getItem('token');
   user.FavoriteMovies.push(movieID);
   localStorage.setItem('user', JSON.stringify(user));
 
-  return this.http.post(apiUrl + `users/${user.Username}/movies/${movieID}`, {
+  return this.http.post(apiUrl + `users/${user.Username}/movies/${movieID}`, {}, {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token,
@@ -112,7 +111,6 @@ addMovieFavorites(movieID:string): Observable<any> {
 removeMovieFavorites(movieID:string): Observable<any> {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-
   const index = user.FavoriteMovies.indexOf(movieID);
   if (index >= 0) {
     user.FavoriteMovies.splice(index, 1);
@@ -149,13 +147,10 @@ deleteUser(): Observable<any> {
   }).pipe(catchError(this.handleError));
 }
 
-isFavoriteMovie(movieId: string): boolean {
+isFavoriteMovie(movieID: string): boolean {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-  if (user) {
-    return user.FavoriteMovies.includes(movieId);
-  }
+  return user.FavoriteMovies.indexOf(movieID) >= 0;
 
-  return false;
 }
 
 
