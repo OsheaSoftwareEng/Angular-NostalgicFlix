@@ -75,13 +75,11 @@ getMovies(): void {
     })
   }
 
-  isFavorite(id: string): boolean {
-    return this.fetchApiData.isFavoriteMovie(id)
-  }
+ 
 
   addFavoriteMovie(id: string): void {
     this.fetchApiData.addMovieFavorites(id).subscribe(() => {
-      this.snackBar.open('added to favorites', 'OK', {
+      this.snackBar.open('Movie added to favorites!', 'OK', {
         duration: 2000
       })
     });
@@ -93,6 +91,11 @@ getMovies(): void {
         duration: 2000
       })
     });
+  }
+
+
+  isFavorite(id: string): boolean {
+    return this.fetchApiData.isFavoriteMovie(id)
   }
 }
 
