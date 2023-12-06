@@ -12,7 +12,7 @@
 				<form class="profile-form">
 					<mat-form-field>
 						<input matInput [(ngModel)]="userData.Username" placeholder="Username" type="text"
-							name="Username" required>
+							name="Username" minlength="7" required>
 					</mat-form-field>
 					<mat-form-field>
 						<input matInput [(ngModel)]="userData.Password" type="password" placeholder="Password"
@@ -38,9 +38,9 @@
 	<h2>Favorite Movies</h2>
 	<div class="movie-container">
 		<mat-card *ngFor="let movie of FavoriteMovies">
-			<mat-dialog-content>
+			<mat-dialog-content class="bg-color movie-items">
 				<mat-card-title class="title-style">{{movie.Title}}</mat-card-title>
-				<mat-card-subtitle><img style="width: 150px;" src={{movie.ImagePath}} /></mat-card-subtitle>
+				<mat-card-subtitle><img style="width: 200px;" src={{movie.ImagePath}} /></mat-card-subtitle>
 				<div class="details-info">
 					<button mat-raised-button (click)="openGenreInfo(movie.Genre)" color="primary"
 						class="more-info">Genre</button>
@@ -49,10 +49,6 @@
 					<button mat-raised-button (click)="openMovieDescription(movie.Description)" color="primary"
 						class="more-info">More
 						Details!</button>
-					<button class="nonfav-btn" *ngIf="!isFavorite(movie._id)" mat-icon-button
-						(click)="addFavoriteMovie(movie._id)" mattooltip="Added to favorites">
-						<mat-icon>favorite_border</mat-icon>
-					</button>
 					<button class="fav-btn" *ngIf="isFavorite(movie._id)" mat-icon-button
 						(click)="removeFavoriteMovie(movie._id)" mattooltip="Removed from favorites">
 						<mat-icon>favorite</mat-icon>
