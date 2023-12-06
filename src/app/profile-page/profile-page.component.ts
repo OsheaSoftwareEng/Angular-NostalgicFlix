@@ -66,15 +66,14 @@ export class ProfilePageComponent implements OnInit {
   deleteUser(): void {
     if (confirm('Are you sure you want to delete your account? This action cannnot be undone.')) {
       this.router.navigate(['welcome']).then(() => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        this.fetchApiData.deleteUser().subscribe(result =>{
-          console.log('Resolution:', result);
-        })
+        localStorage.clear();
         this.snackBar.open('Your account has been deleted.', 'OK', {
           duration: 3000
         });
       })}
+      this.fetchApiData.deleteUser().subscribe(result =>{
+        console.log('Resolution:', result);
+      })
   }
   openGenreInfo(genre: any): void {
     this.dialog.open(MovieInfoComponent,{
@@ -119,14 +118,6 @@ export class ProfilePageComponent implements OnInit {
   removeFavoriteMovie(id: string): void {
     this.fetchApiData.removeMovieFavorites(id).subscribe(() => {
       this.snackBar.open('removed from favorites', 'OK', {
-        duration: 2000
-      })
-    });
-  }
-
-  addFavoriteMovie(id: string): void {
-    this.fetchApiData.addMovieFavorites(id).subscribe(() => {
-      this.snackBar.open('added to favorites', 'OK', {
         duration: 2000
       })
     });
