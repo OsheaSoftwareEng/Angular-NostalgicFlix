@@ -31,7 +31,9 @@ if (!user) {
 }
 
 
-
+  /**
+   * calls the getAllMovies API and returns the movies from the database
+   */
 getMovies(): void {
   this.fetchApiData.getAllMovies().subscribe((response: any) => {
       this.movies = response;
@@ -66,17 +68,10 @@ getMovies(): void {
     })
   }
 
-  openMoviePreview(movie: any): void {
-    this.dialog.open(MovieInfoComponent,{
-      data: {
-        title: movie.name,
-        content: movie.MovieEmbed
-      }
-    })
-  }
-
- 
-
+    /**
+   * calls the addMovieFavorites API adds movie to users favorites 
+   * @param id of the movie selected 
+   */
   addFavoriteMovie(id: string): void {
     this.fetchApiData.addMovieFavorites(id).subscribe(() => {
       this.snackBar.open('Movie added to favorites!', 'OK', {
@@ -85,6 +80,10 @@ getMovies(): void {
     });
   }
 
+  /**
+   * calls the removeMovieFavorites API and removes a movie to users favorites 
+   * @param id of the movie selected 
+   */
   removeFavoriteMovie(id: string): void {
     this.fetchApiData.removeMovieFavorites(id).subscribe(() => {
       this.snackBar.open('removed from favorites', 'OK', {

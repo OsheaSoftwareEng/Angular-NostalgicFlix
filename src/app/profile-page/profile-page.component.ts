@@ -52,7 +52,10 @@ export class ProfilePageComponent implements OnInit {
   }
 
  
-
+/**
+   * calls the updateUser API and updates the users information in the database
+   * @function updateUser
+   */
   updateUser(): void {
     this.fetchApiData.updateUser(this.userData).subscribe((result) => {
       localStorage.setItem('user', JSON.stringify(result))
@@ -62,7 +65,10 @@ export class ProfilePageComponent implements OnInit {
       })
     })
   }
-
+/**
+   * calls the deleteUser API and removes the user in the database
+   * @function deleteUser
+   */
   deleteUser(): void {
     if (confirm('Are you sure you want to delete your account? This action cannnot be undone.')) {
       this.router.navigate(['welcome']).then(() => {
@@ -114,7 +120,10 @@ export class ProfilePageComponent implements OnInit {
   isFavorite(id: string): boolean {
     return this.fetchApiData.isFavoriteMovie(id)
   }
-
+  /**
+   * calls the removeMovieFavorites API and removes a movie to users favorites 
+   * @param id of the movie selected 
+   */
   removeFavoriteMovie(id: string): void {
     this.fetchApiData.removeMovieFavorites(id).subscribe(() => {
       this.snackBar.open('removed from favorites', 'OK', {

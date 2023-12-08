@@ -13,7 +13,15 @@ export class FetchApiDataService {
  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
   }
- // Making the api call for the user registration endpoint
+ 
+   /**
+   * User registration
+   * @service POST to the respective endpoint of apiUrl to register a new user
+   * @function userRegistration
+   * @param {any} userDetails
+   * @returns a new user object in json format
+   */
+
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
@@ -33,7 +41,14 @@ private handleError(error: HttpErrorResponse): any {
     'Something bad happened; please try again later.');
   }
   
-  //Making an api call for users to login
+   /**
+   * User login
+   * @service POST to the respective endpoint of apiUrl to log in a new user
+   * @function userLogin
+   * @param {any} userDetails
+   * @returns a user object in json format
+   */
+
   public userLogin(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'login', userDetails).pipe(
       catchError(this.handleError)
@@ -41,7 +56,14 @@ private handleError(error: HttpErrorResponse): any {
   };
 
 
-  //Api call to get all movies
+ 
+  /**
+   * Get all movies
+   * @service GET request to the respective endpoint of apiUrl to get all movies
+   * @function getAllMovies
+   * @returns a object with all the movies in json format
+   */
+
 getAllMovies(): Observable<any> {
   const token = localStorage.getItem('token');
   return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
@@ -52,7 +74,13 @@ getAllMovies(): Observable<any> {
   );
 }
 
-//Api call to get one movie by title endpoint
+  /**
+   * Get one movies
+   * @service GET request to the respective endpoint of apiUrl to get one movie
+   * @function getOneMovie
+   * @returns a object of one movie in json format
+   */
+
 getOneMovie(title:string): Observable<any> {
   const token = localStorage.getItem('token');
   return this.http.get(apiUrl + 'movies/' + title, {
@@ -62,7 +90,14 @@ getOneMovie(title:string): Observable<any> {
   }).pipe(catchError(this.handleError));
 }
 
-//Api call to get a director 
+
+  /**
+   * Get a director
+   * @service GET request to the respective endpoint of apiUrl to get one director
+   * @function getDirector
+   * @returns a single object in JSON format
+   */
+
 getDirector(directorName:string): Observable<any> {
   const token = localStorage.getItem('token');
   return this.http.get(apiUrl + 'movies/directors/' + directorName, {
@@ -72,7 +107,13 @@ getDirector(directorName:string): Observable<any> {
   }).pipe(catchError(this.handleError));
 }
 
-//Api call to get one genre endpoint 
+  /**
+   * Get a list of movies by genre
+   * @service GET request to the respective endpoint of apiUrl to get a list of movies from the same genre
+   * @function getGenre
+   * @returns a list of movies with the genre selected in JSON format
+   */
+
 getGenre(genreName:string): Observable<any> {
   const token = localStorage.getItem('token');
   return this.http.get(apiUrl + 'movies/genres/' + genreName, {
@@ -81,8 +122,13 @@ getGenre(genreName:string): Observable<any> {
     })
   }).pipe(catchError(this.handleError));
 }
+  /**
+   * Get user info
+   * @service GET request to the respective endpoint of apiUrl to get user info
+   * @function getUser
+   * @returns a user object in JSON format
+   */
 
-//Api call to get user by username and the data for the users info and favorite movies the user has.
 getUser(userName:string): Observable<any> {
   const token = localStorage.getItem('token');
   return this.http.get(apiUrl + 'users/' + userName, {
@@ -92,7 +138,14 @@ getUser(userName:string): Observable<any> {
   }).pipe(catchError(this.handleError));
 }
 
-//Api call to add movies to favorites
+  /**
+   * Add movie to favorite list
+   * @service POST request to the respective endpoint of apiUrl to add movie 
+   * @function addMovieFavorites
+   * @param {string} movieID
+   * @returns updated user object with added movie in favorite movies array in JSON format
+   */
+
 addMovieFavorites(movieID:string): Observable<any> {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
   const token = localStorage.getItem('token');
@@ -107,7 +160,14 @@ addMovieFavorites(movieID:string): Observable<any> {
   }).pipe(catchError(this.handleError));
 }
 
-//Api call to remove a movie from favorite
+/**
+   * Add movie to favorite list
+   * @service DELETE request to the respective endpoint of apiUrl to add movie 
+   * @function removeMovieFavorites
+   * @param {string} movieID
+   * @returns updated user object with removed movie in favorite movies array in JSON format
+   */
+
 removeMovieFavorites(movieID:string): Observable<any> {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -125,7 +185,15 @@ removeMovieFavorites(movieID:string): Observable<any> {
   }).pipe(catchError(this.handleError));
 }
 
-//Api call to update users information
+
+ /**
+   * Update user info
+   * @service POST request to the respective endpoint of apiUrl to update user info
+   * @function updateUser
+   * @param {any} updatedInfo
+   * @returns updated user object in JSON format
+   */
+
 updateUser(updatedUser: any): Observable<any> {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -136,7 +204,13 @@ updateUser(updatedUser: any): Observable<any> {
   }).pipe(catchError(this.handleError));
 }
 
-//Api call to delete a user
+ /**
+   * Delete user
+   * @service DELETE request to the respective endpoint of apiUrl to remove user 
+   * @function deleteUser
+   * @returns success message if user gets deleted from database 
+   */
+
 deleteUser(): Observable<any> {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -152,13 +226,6 @@ isFavoriteMovie(movieID: string): boolean {
   return user.FavoriteMovies.indexOf(movieID) >= 0;
 
 }
-
-
-
-
-
-
-
 
 // Non-typed response extraction
 private extractResponseData(res: Response): any {

@@ -34,8 +34,10 @@ export class UserLoginFormComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * Sending the form inputs to the API to log in user
+   * @function loginUser
+   */
 loginUser(): void {
   this.fetchApiData.userLogin(this.userData).subscribe((result) => {
 // Logic for a successful user registration goes here! (To be implemented)
@@ -44,14 +46,11 @@ loginUser(): void {
    this.snackBar.open('You were successfully logged in!', 'OK', {
       duration: 2000
    });
-
    //storing the users information to the local storage 
    localStorage.setItem('user', JSON.stringify(result.user));
    localStorage.setItem('token', result.token);
    this.router.navigate(['movies']);
    console.log(localStorage);
-
-
   }, (result) => {
     console.log(result);
     this.snackBar.open(result, 'OK', {
