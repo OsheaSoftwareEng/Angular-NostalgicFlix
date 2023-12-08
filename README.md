@@ -1,6 +1,48 @@
 # NostalgicFlixAngularClient
 
+This is an Angular Application that uses my movie API to display a list of movies for users to see information and add to their favorites
+
+**Link to API:** https://github.com/OsheaSoftwareEng/NostalgicFlix-API
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
+
+![alt tag](https://imgur.com/J1s5olv.png)
+
+## How It's Made:
+
+**Tech used:** Angular, HTML5, SCSS, Typescript, Angular Material, Node.js
+
+## Getting started
+
+### 1. Create a new folder
+
+Clone the git repository within the project directory folder you just created.
+
+```shell
+ git clone https://github.com/OsheaSoftwareEng/Angular-NostalgicFlix.git
+```
+
+## Dependency Versions
+
+#### Make sure you have these dependencies in your project folder
+
+```shell
+"dependencies": {
+    "@angular/animations": "^16.2.0",
+    "@angular/cdk": "^16.2.12",
+    "@angular/common": "^16.2.0",
+    "@angular/compiler": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.0",
+    "@angular/material": "^16.2.12",
+    "@angular/platform-browser": "^16.2.0",
+    "@angular/platform-browser-dynamic": "^16.2.0",
+    "@angular/router": "^16.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
+  }
+```
 
 ## Development server
 
