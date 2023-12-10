@@ -2,6 +2,7 @@
 
 This is an Angular Application that uses my movie API to display a list of movies for users to see information and add to their favorites
 
+**Live Demo:** https://osheasoftwareeng.github.io/Angular-NostalgicFlix/
 **Link to API:** https://github.com/OsheaSoftwareEng/NostalgicFlix-API
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
